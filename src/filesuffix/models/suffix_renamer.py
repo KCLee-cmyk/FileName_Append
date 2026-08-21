@@ -57,4 +57,15 @@ class SuffixRenamer:
         directory = os.path.dirname(path)
         old_name = os.path.basename(path)
         new_name = self.build_new_name(old_name, suffix)
+
+        if "/" in path and "\\" not in path:
+            if not directory:
+                return new_name
+            return f"{directory.rstrip('/')}/{new_name}"
+
+        if "\\" in path and "/" not in path:
+            if not directory:
+                return new_name
+            return f"{directory.rstrip('\\')}\\{new_name}"
+
         return os.path.join(directory, new_name)
