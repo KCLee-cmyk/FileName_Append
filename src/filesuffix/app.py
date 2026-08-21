@@ -24,7 +24,7 @@ def main() -> int:
 
     window, browser, filter_bar, suffix_input = widgets.create_main_window()
 
-    AppController(
+    controller = AppController(
         window=window,
         browser=browser,
         filter_bar=filter_bar,
